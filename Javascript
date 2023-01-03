@@ -1,0 +1,48 @@
+self.init = function(){    
+    self.dt = 0;
+        self.oldTime = Date.now();
+        self.canvas = document.createElement('canvas');                
+        self.canvasContainer = $('#canvas-container');
+
+        var canvasContainerDisabled = document.getElementById('canvas-container');
+        self.canvas.onselectstart = function() {
+            return false;
+        };
+
+        self.canvas.width = self.cw = 600;
+        self.canvas.height = self.ch = 400;    
+
+        self.particles = [];    
+        self.partCount = 30;
+        self.fireworks = [];    
+        self.mx = self.cw/2;
+        self.my = self.ch/2;
+        self.currentHue = 170;
+        self.partSpeed = 5;
+        self.partSpeedVariance = 10;
+        self.partWind = 50;
+        self.partFriction = 5;
+        self.partGravity = 1;
+        self.hueMin = 150;
+        self.hueMax = 200;
+        self.fworkSpeed = 2;
+        self.fworkAccel = 4;
+        self.hueVariance = 30;
+        self.flickerDensity = 20;
+        self.showShockwave = false;
+        self.showTarget = true;
+        self.clearAlpha = 25;
+
+        self.canvasContainer.append(self.canvas);
+        self.ctx = self.canvas.getContext('2d');
+        self.ctx.lineCap = 'round';
+        self.ctx.lineJoin = 'round';
+        self.lineWidth = 1;
+        self.bindEvents();            
+        self.canvasLoop();
+
+        self.canvas.onselectstart = function() {
+            return false;
+        };
+
+    };
